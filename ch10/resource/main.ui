@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>695</width>
+    <width>1222</width>
     <height>545</height>
    </rect>
   </property>
@@ -15,7 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="0" column="1">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="OverviewWidget" name="widget_3" native="true">
@@ -86,8 +86,11 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="1">
+    <item row="0" column="2">
      <widget class="OrderbookWidget" name="widget" native="true"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="TickerlistWidget" name="widget_4" native="true"/>
     </item>
    </layout>
   </widget>
@@ -96,7 +99,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>695</width>
+     <width>1222</width>
      <height>21</height>
     </rect>
    </property>
@@ -120,6 +123,12 @@
    <class>ChartWidget</class>
    <extends>QWidget</extends>
    <header>chart</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TickerlistWidget</class>
+   <extends>QWidget</extends>
+   <header>tickerlistwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
