@@ -62,7 +62,8 @@ class MainWindow(QMainWindow, form_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.ticker = "BTC"
+        self.ticker = "SOL"
+        # self.ticker = "BTC"
         self.button.clicked.connect(self.clickBtn)
         self.setWindowTitle("Home Trading System")
 
@@ -108,6 +109,7 @@ class MainWindow(QMainWindow, form_class):
         self.widget.closeEvent(event)
         self.widget_2.closeEvent(event)
         self.widget_3.closeEvent(event)
+        self.widget_4.closeEvent(event)
     # ------------------------------------------
 
 if __name__ == "__main__":

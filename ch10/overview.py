@@ -51,7 +51,7 @@ class OverviewWidget(QWidget):
         self.ovw.close()
 
     def fill24Data(self, currPrice, volume, highPrice, value, lowPrice, PrevClosePrice):
-        self.label_1.setText(f"{currPrice:,}")
+        self.label_1.setText(f"[KRW]{currPrice:,}")
         self.label_4.setText(f"{volume:.4f} {self.ticker}")
         self.label_6.setText(f"{highPrice:,}")
         self.label_8.setText(f"{value/100000000:,.1f} 억")
@@ -60,17 +60,17 @@ class OverviewWidget(QWidget):
         self.__updateStyle()
 
     def fillMidData(self, currPrice, chgRate, volumePower):
-        self.label_1.setText(f"{currPrice:,}")
+        self.label_1.setText(f"[KRW]{currPrice:,}")
         self.label_2.setText(f"{chgRate:+.2f}%")
         self.label_12.setText(f"{volumePower:.2f}%")
         self.__updateStyle()
 
     def __updateStyle(self):
         if '-' in self.label_2.text():
-            self.label_1.setStyleSheet("color:blue;")
+            self.label_1.setStyleSheet("color:black;")
             self.label_2.setStyleSheet("background-color:blue;color:white")
         else:
-            self.label_1.setStyleSheet("color:red;")
+            self.label_1.setStyleSheet("color:black;")
             self.label_2.setStyleSheet("background-color:red;color:white")
 
 if __name__ == "__main__":

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1222</width>
-    <height>545</height>
+    <width>1236</width>
+    <height>638</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -99,7 +99,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1222</width>
+     <width>1236</width>
      <height>21</height>
     </rect>
    </property>
@@ -128,7 +128,7 @@
   <customwidget>
    <class>TickerlistWidget</class>
    <extends>QWidget</extends>
-   <header>tickerlistwidget.h</header>
+   <header>tickerlist</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
