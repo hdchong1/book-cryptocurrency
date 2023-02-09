@@ -19,9 +19,11 @@ class TickerlistWorker(QThread):
     def run(self):
         while self.alive:
             data  = pybithumb.get_orderbook(self.ticker, limit=10)
-            # tickers  = pybithumb.get_tickers()
-            # json error
-            # current_prices = pybithumb.get_current_price(tickers)
+
+            # tickers = pybithumb.get_tickers()
+            # all_prices = pybithumb.get_current_price("ALL")
+            # for ticker in tickers:
+            #     print(ticker, all_prices[ticker]['closing_price'])
 
             # data  = pybithumb.get_tickerlist(self.ticker, limit=10)
             time.sleep(0.05)
@@ -44,6 +46,7 @@ class TickerlistWidget(QWidget):
 
         for i in range(self.tableList.rowCount()):
             # 매도호가
+            # print(self.tableList.rowCount())
             item_0 = QTableWidgetItem(str(""))
             item_0.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
             self.tableList.setItem(i, 0, item_0)
@@ -56,6 +59,9 @@ class TickerlistWidget(QWidget):
             item_2.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
             self.tableList.setItem(i, 2, item_2)
 
+            item_3 = QTableWidgetItem(str(""))
+            item_3.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+            self.tableList.setItem(i, 3, item_3)
             # item_2 = QProgressBar(self.tableList)
             # item_2.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
             # item_2.setStyleSheet("""
@@ -90,15 +96,37 @@ class TickerlistWidget(QWidget):
             # anim.setDuration(200)
             # self.bidsAnim.append(anim)
             # # ------------------------------------------
-
         self.tl = TickerlistWorker(self.ticker)
-        # self.tl.dataSent.connect(self.updateData)
-        self.tl.start()
+        self.tl.dataSent.connect(self.updateData)
+        # self.tl.start()
+
+        tickers = pybithumb.get_tickers()
+        all_prices = pybithumb.get_current_price("ALL")
+        i = 0
+        for ticker in tickers:
+            print(i, ticker, all_prices[ticker]['closing_price'])
+            item_0 = self.tableList.item(i, 0)
+            item_0.setText(ticker)
+            item_1 = self.tableList.item(i, 1)
+            item_1.setText(all_prices[ticker]['closing_price'])
+            item_2 = self.tableList.item(i, 2)
+            item_2.setText(all_prices[ticker]['fluctate_rate_24H'])
+            item_3 = self.tableList.item(i, 3)
+            item_3.setText(all_prices[ticker]['acc_trade_value_24H'])
+
+            i = i + 1
+            if i == self.tableList.rowCount() :
+                print('break')
+                break
+
+
+
+
 
     def updateData(self, data):
-        tradingBidValues = [ ]
-        for v in data['bids']:
-            tradingBidValues.append(int(v['price'] * v['quantity']))
+        # tradingBidValues = [ ]
+        # for v in data['bids']:
+        #     tradingBidValues.append(int(v['price'] * v['quantity']))
         # tradingAskValues = [ ]
         # for v in data['asks'][::-1]:
         #     tradingAskValues.append(int(v['price'] * v['quantity']))
@@ -120,13 +148,32 @@ class TickerlistWidget(QWidget):
         #     self.asksAnim[i].start()
         #     # ------------------------------------------
 
-        for i, v in enumerate(data['bids']):
+        tickers = pybithumb.get_tickers()
+        all_prices = pybithumb.get_current_price("ALL")
+        i = 0
+        for ticker in tickers:
+            print(i, ticker, all_prices[ticker]['closing_price'])
             item_0 = self.tableList.item(i, 0)
-            item_0.setText(f"{v['price']:,}")
+            item_0.setText(ticker)
             item_1 = self.tableList.item(i, 1)
-            item_1.setText(f"{v['quantity']:,}")
+            item_1.setText(all_prices[ticker]['closing_price'])
             item_2 = self.tableList.item(i, 2)
-            item_2.setText(f"{tradingBidValues[i]:,}")
+            item_2.setText(all_prices[ticker]['prev_closing_price'])
+            item_3 = self.tableList.item(i, 3)
+            item_3.setText(all_prices[ticker]['fluctate_rate_24H'])
+
+            i = i + 1
+            if i == self.tableList.rowCount() :
+                print('break')
+                break
+
+        # for i, v in enumerate(data['bids']):
+        #     item_0 = self.tableList.item(i, 0)
+        #     item_0.setText(f"{v['price']:,}")
+        #     item_1 = self.tableList.item(i, 1)
+        #     item_1.setText(f"{v['quantity']:,}")
+        #     item_2 = self.tableList.item(i, 2)
+        #     item_2.setText(f"{tradingBidValues[i]:,}")
             # item_2 = self.tableList.cellWidget(i, 2)
             # item_2.setRange(0, maxtradingValue)
             # item_2.setFormat(f"{tradingBidValues[i]:,}")
