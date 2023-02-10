@@ -44,31 +44,31 @@ class TickerlistWidget(QWidget):
         # self.bidsAnim = [ ]
         # ------------------------------------------
 
-        for i in range(self.tableList.rowCount()):
+        for i in range(self.tickerTableList.rowCount()):
             # 매도호가
-            # print(self.tableList.rowCount())
+            # print(self.tickerTableList.rowCount())
             item_0 = QTableWidgetItem(str(""))
             item_0.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-            self.tableList.setItem(i, 0, item_0)
+            self.tickerTableList.setItem(i, 0, item_0)
 
             item_1 = QTableWidgetItem(str(""))
             item_1.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-            self.tableList.setItem(i, 1, item_1)
+            self.tickerTableList.setItem(i, 1, item_1)
 
             item_2 = QTableWidgetItem(str(""))
             item_2.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-            self.tableList.setItem(i, 2, item_2)
+            self.tickerTableList.setItem(i, 2, item_2)
 
             item_3 = QTableWidgetItem(str(""))
             item_3.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-            self.tableList.setItem(i, 3, item_3)
-            # item_2 = QProgressBar(self.tableList)
+            self.tickerTableList.setItem(i, 3, item_3)
+            # item_2 = QProgressBar(self.tickerTableList)
             # item_2.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
             # item_2.setStyleSheet("""
             #     QProgressBar {background-color : rgba(0, 0, 0, 0%);border : 1}
             #     QProgressBar::Chunk {background-color : rgba(255, 0, 0, 50%);border : 1}
             # """)
-            # self.tableList.setCellWidget(i, 2, item_2)
+            # self.tickerTableList.setCellWidget(i, 2, item_2)
             # ----------------- 추 가 ------------------
             # anim = QPropertyAnimation(item_2, b"value")
             # anim.setDuration(200)
@@ -78,19 +78,19 @@ class TickerlistWidget(QWidget):
             # # 매수호가
             # item_0 = QTableWidgetItem(str(""))
             # item_0.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-            # self.tableList.setItem(i, 0, item_0)
+            # self.tickerTableList.setItem(i, 0, item_0)
             #
             # item_1 = QTableWidgetItem(str(""))
             # item_1.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-            # self.tableList.setItem(i, 1, item_1)
+            # self.tickerTableList.setItem(i, 1, item_1)
             #
-            # item_2 = QProgressBar(self.tableList)
+            # item_2 = QProgressBar(self.tickerTableList)
             # item_2.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
             # item_2.setStyleSheet("""
             #     QProgressBar {background-color : rgba(0, 0, 0, 0%);border : 1}
             #     QProgressBar::Chunk {background-color : rgba(0, 255, 0, 40%);border : 1}
             # """)
-            # self.tableList.setCellWidget(i, 2, item_2)
+            # self.tickerTableList.setCellWidget(i, 2, item_2)
             # # ----------------- 추 가 ------------------
             # anim = QPropertyAnimation(item_2, b"value")
             # anim.setDuration(200)
@@ -105,17 +105,17 @@ class TickerlistWidget(QWidget):
         i = 0
         for ticker in tickers:
             print(i, ticker, all_prices[ticker]['closing_price'])
-            item_0 = self.tableList.item(i, 0)
+            item_0 = self.tickerTableList.item(i, 0)
             item_0.setText(ticker)
-            item_1 = self.tableList.item(i, 1)
+            item_1 = self.tickerTableList.item(i, 1)
             item_1.setText(all_prices[ticker]['closing_price'])
-            item_2 = self.tableList.item(i, 2)
+            item_2 = self.tickerTableList.item(i, 2)
             item_2.setText(all_prices[ticker]['fluctate_rate_24H'])
-            item_3 = self.tableList.item(i, 3)
+            item_3 = self.tickerTableList.item(i, 3)
             item_3.setText(all_prices[ticker]['acc_trade_value_24H'])
 
             i = i + 1
-            if i == self.tableList.rowCount() :
+            if i == self.tickerTableList.rowCount() :
                 print('break')
                 break
 
@@ -134,11 +134,11 @@ class TickerlistWidget(QWidget):
         # maxtradingValue = max(tradingBidValues)
 
         # for i, v in enumerate(data['asks'][::-1]):
-        #     item_0 = self.tableList.item(i, 0)
+        #     item_0 = self.tickerTableList.item(i, 0)
         #     item_0.setText(f"{v['price']:,}")
-        #     item_1 = self.tableList.item(i, 1)
+        #     item_1 = self.tickerTableList.item(i, 1)
         #     item_1.setText(f"{v['quantity']:,}")
-        #     item_2 = self.tableList.cellWidget(i, 2)
+        #     item_2 = self.tickerTableList.cellWidget(i, 2)
         #     item_2.setRange(0, maxtradingValue)
         #     item_2.setFormat(f"{tradingAskValues[i]:,}")
         #     # item_2.setValue(tradingAskValues[i])
@@ -153,28 +153,28 @@ class TickerlistWidget(QWidget):
         i = 0
         for ticker in tickers:
             print(i, ticker, all_prices[ticker]['closing_price'])
-            item_0 = self.tableList.item(i, 0)
+            item_0 = self.tickerTableList.item(i, 0)
             item_0.setText(ticker)
-            item_1 = self.tableList.item(i, 1)
+            item_1 = self.tickerTableList.item(i, 1)
             item_1.setText(all_prices[ticker]['closing_price'])
-            item_2 = self.tableList.item(i, 2)
+            item_2 = self.tickerTableList.item(i, 2)
             item_2.setText(all_prices[ticker]['prev_closing_price'])
-            item_3 = self.tableList.item(i, 3)
+            item_3 = self.tickerTableList.item(i, 3)
             item_3.setText(all_prices[ticker]['fluctate_rate_24H'])
 
             i = i + 1
-            if i == self.tableList.rowCount() :
+            if i == self.tickerTableList.rowCount() :
                 print('break')
                 break
 
         # for i, v in enumerate(data['bids']):
-        #     item_0 = self.tableList.item(i, 0)
+        #     item_0 = self.tickerTableList.item(i, 0)
         #     item_0.setText(f"{v['price']:,}")
-        #     item_1 = self.tableList.item(i, 1)
+        #     item_1 = self.tickerTableList.item(i, 1)
         #     item_1.setText(f"{v['quantity']:,}")
-        #     item_2 = self.tableList.item(i, 2)
+        #     item_2 = self.tickerTableList.item(i, 2)
         #     item_2.setText(f"{tradingBidValues[i]:,}")
-            # item_2 = self.tableList.cellWidget(i, 2)
+            # item_2 = self.tickerTableList.cellWidget(i, 2)
             # item_2.setRange(0, maxtradingValue)
             # item_2.setFormat(f"{tradingBidValues[i]:,}")
             # item_2.setValue(tradingBidValues[i])
