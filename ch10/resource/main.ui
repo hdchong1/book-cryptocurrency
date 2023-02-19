@@ -87,7 +87,11 @@
      </layout>
     </item>
     <item row="0" column="2">
-     <widget class="OrderbookWidget" name="widget" native="true"/>
+     <widget class="OrderbookWidget" name="widget" native="true">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
     <item row="0" column="0">
      <widget class="TickerlistWidget" name="widget_4" native="true"/>
